@@ -1,0 +1,10 @@
+C:\apps\Generic\GenericFactory\GenericFactory\bin\Debug\GenericFactory.exe.config
+C:\apps\Generic\GenericFactory\GenericFactory\bin\Debug\GenericFactory.exe
+C:\apps\Generic\GenericFactory\GenericFactory\bin\Debug\GenericFactory.pdb
+C:\apps\Generic\GenericFactory\GenericFactory\obj\Debug\GenericFactory.csprojResolveAssemblyReference.cache
+C:\apps\Generic\GenericFactory\GenericFactory\obj\Debug\GenericFactory.exe
+C:\apps\Generic\GenericFactory\GenericFactory\obj\Debug\GenericFactory.pdb
+C:\apps\Generic\GenericFactory\GenericFactory\bin\Debug\Autofac.dll
+C:\apps\Generic\GenericFactory\GenericFactory\bin\Debug\Autofac.xml
+C:\apps\Generic\GenericFactory\GenericFactory\bin\Debug\Rhino.Mocks.dll
+C:\apps\Generic\GenericFactory\GenericFactory\bin\Debug\Rhino.Mocks.xml
