@@ -12,9 +12,6 @@ namespace GenericFactory
 {
     class Program
     {
-
-        private static IMyInterface mock;
-
         static void Main(string[] args)
         {
             var fac=new MyFactory();
