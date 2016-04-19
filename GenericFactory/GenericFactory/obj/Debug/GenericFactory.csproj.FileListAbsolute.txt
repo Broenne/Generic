@@ -11,3 +11,12 @@ C:\apps\Generic\GenericFactory\GenericFactory\bin\Debug\Rhino.Mocks.xml
 C:\apps\GenericRepo\GenericFactory\GenericFactory\bin\Debug\GenericFactory.exe.config
 C:\apps\GenericRepo\GenericFactory\GenericFactory\obj\Debug\GenericFactory.exe
 C:\apps\GenericRepo\GenericFactory\GenericFactory\obj\Debug\GenericFactory.pdb
+C:\apps\GenericRepo\GenericFactory\GenericFactory\bin\Debug\GenericFactory.exe
+C:\apps\GenericRepo\GenericFactory\GenericFactory\bin\Debug\GenericFactory.pdb
+C:\apps\GenericRepo\GenericFactory\GenericFactory\bin\Debug\Autofac.dll
+C:\apps\GenericRepo\GenericFactory\GenericFactory\bin\Debug\nunit.framework.dll
+C:\apps\GenericRepo\GenericFactory\GenericFactory\bin\Debug\Rhino.Mocks.dll
+C:\apps\GenericRepo\GenericFactory\GenericFactory\bin\Debug\Autofac.xml
+C:\apps\GenericRepo\GenericFactory\GenericFactory\bin\Debug\nunit.framework.xml
+C:\apps\GenericRepo\GenericFactory\GenericFactory\bin\Debug\Rhino.Mocks.xml
+C:\apps\GenericRepo\GenericFactory\GenericFactory\obj\Debug\GenericFactory.csprojResolveAssemblyReference.cache
