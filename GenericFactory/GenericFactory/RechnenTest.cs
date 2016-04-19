@@ -22,5 +22,22 @@ namespace GenericFactory
             Assert.AreEqual( 1, result["a0"]);
             Assert.AreEqual( 1, result["a1"]);
         }
+
+        [Test]
+        public void Test2()
+        {
+            var ccc = new rechnen();
+            var dic = new Dictionary<double, double?>();
+            dic.Add(0, null);
+            dic.Add(1, null);
+            dic.Add(2, 4);
+            dic.Add(3, null);
+            dic.Add(4, null);
+
+            var result = ccc.FillAllBefore(dic);
+            Assert.AreEqual(4, result[3]);
+            Assert.AreEqual(4, result[4]);
+            Assert.AreEqual(4, result[0]);
+        }
     }
 }
