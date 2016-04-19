@@ -91,13 +91,91 @@ namespace GenericFactory
                 }
             }
 
-            var result = new Dictionary<double,double>();
-            foreach (var item in dic)
-            {
-                result.Add(item.Key, (double)item.Value);
-            } 
-            return result;
+            return ReadOnlyDictionary(dic);
         }
 
+        public IReadOnlyDictionary<double, double> FillAll(IReadOnlyDictionary<double, double?> ToFill)
+        {
+            var dic = new Dictionary<double, double?>((IDictionary<double, double?>)ToFill);
+            if (ToFill.First().Value==null )
+            {
+                throw new Exception();
+            }
+            if (ToFill.Last().Value == null)
+            {
+                throw new Exception();
+            }
+
+            // split array before and after each null
+            
+
+
+
+            // get first value in dic
+            var count = ToFill.Count;
+            double? localFirst = null;
+            double? localFirstKey=null;
+            for (double i = 0; i < count; i++)
+            {
+                Console.WriteLine("i:" + i);
+                if (ToFill[i]!=null && localFirst==null)
+                { 
+                    localFirst = ToFill[i];
+                    localFirstKey = i;
+                    continue;
+                }
+                if (ToFill[i] != null && localFirst != null)
+                {
+                    var localLast=ToFill[i];
+                    double? localLastKey=i;
+                    var ccc = new Dictionary<double, double?>();
+                    this.GetValue(localFirstKey, localLastKey, localFirst, localLast, ccc);
+                    foreach (var item in ccc)
+                    {
+                        dic[item.Key] = item.Value;
+                    }
+                    localFirst = null; // reset for next part dictionary
+
+                    // hint: have to use try get value, because it is possible to overrun the dictionary
+                    double? oneStepBetweenHelper;
+                    ToFill.TryGetValue(i + 1, out oneStepBetweenHelper);
+                    // when the lastValue from one is the first of the other, we have to recount
+                    if (oneStepBetweenHelper == null)
+                    { 
+                        i--; 
+                    }
+                }
+            }
+
+            return ReadOnlyDictionary(dic);
+        }
+
+        private void GetValue(double? localFirstKey, double? localLastKey, double? localFirst, double? localLast, Dictionary<double, double?> dic)
+        {
+            if (localFirstKey != null && localLastKey != null)
+            {
+                var xxx = new Dictionary<double, double>();
+                xxx.Add((double) localFirstKey, localFirst.Value);
+                xxx.Add((double) localLastKey, localLast.Value);
+                var res = this.Calculate(1, xxx);
+                // fill between
+                var m = res["a1"];
+                var b = res["a0"];
+                for (double j = localFirstKey.Value + 1; j < localLastKey.Value; j++)
+                {
+                    dic[j] = j*m + b;
+                }
+            }
+        }
+
+        private IReadOnlyDictionary<double, double> ReadOnlyDictionary(Dictionary<double, double?> dic)
+        {
+            var result = new Dictionary<double, double>();
+            foreach (var item in dic)
+            {
+                result.Add(item.Key, (double) item.Value);
+            }
+            return result;
+        }
     }
 }
