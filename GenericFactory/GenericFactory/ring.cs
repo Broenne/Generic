@@ -10,7 +10,7 @@ namespace GenericFactory
 {
     public class ring
     {
-        public Dictionary<int, List<ResultObject>> Do()
+        public SortedDictionary<int, List<ResultObject>> Do()
         {
             var one = new data[100];
             var two = new data[100];
@@ -39,7 +39,7 @@ namespace GenericFactory
 
 
             // key ist timestamp
-            var result = new Dictionary<int, List<ResultObject>>();
+            var result = new SortedDictionary<int, List<ResultObject>>();
             // get all timestamps and add to result
             data[] first = dic[0];
             for(int j = 0; j < 100; j++)
@@ -50,34 +50,30 @@ namespace GenericFactory
 
             // von jedem erstmal die werte holen und sensoren
             var sensorList=new List<ResultObjectHelper>();
-            //foreach (var sensor in dic)
-            //{
-                int hh = 0;
-                foreach (var VARIABLE in dic)
-                {
-                    for(int u = 0; u < 100 ; u++)
-                    { 
-                        var res = new ResultObjectHelper();
-                        res.sensor = VARIABLE.Key;
-                        res.valueRes = VARIABLE.Value[u].randomValue;
-                        res.Time = VARIABLE.Value[u].Time;
-                        hh++;
-                        sensorList.Add(res);
-                    }
-                }
-            //}
 
+            foreach (var VARIABLE in dic)
+            {
+                for(int u = 0; u < 100 ; u++)
+                { 
+                    var res = new ResultObjectHelper();
+                    res.sensor = VARIABLE.Key;
+                    res.valueRes = VARIABLE.Value[u].randomValue;
+                    res.Time = VARIABLE.Value[u].Time;
+                    sensorList.Add(res);
+                }
+            }
+           
             foreach (var VARIABLE in result)
             {
                 int timestamp = VARIABLE.Key;
-                for (int j = first.Length-1; j > 0; j--)
+                for (int j = 199; j > 0; j--)
                 {
                     if (timestamp == sensorList[j].Time)
                     {
                         var obj=new ResultObject();
                         obj.sensor = sensorList[j].sensor;
                         obj.valueRes = sensorList[j].valueRes;
-                        var resList=result[timestamp];// = obj;
+                        var resList=result[timestamp];
                         resList.Add(obj);
                     }
                 }

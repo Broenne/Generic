@@ -19,6 +19,10 @@ namespace GenericFactory
 
             Assert.AreEqual(100, res.Count);
 
+            List<ResultObject> hhh = res.Last().Value;
+            //hhh[1].valueRes;
+            Assert.GreaterOrEqual(90, hhh[1].valueRes);
+
             //foreach (KeyValuePair<int, List < ResultObject >> timestamp in res)
             //{
             //    Console.WriteLine("timestamp:" + timestamp.Key);
