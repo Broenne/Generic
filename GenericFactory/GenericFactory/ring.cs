@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using NUnit.Framework.Compatibility;
 using NUnit.Framework.Internal;
 
 namespace GenericFactory
@@ -12,15 +13,15 @@ namespace GenericFactory
     {
         public SortedDictionary<int, List<ResultObject>> Do()
         {
-            var one = new data[100];
-            var two = new data[100];
+            var one = new data[1000];
+            var two = new data[1000];
             var random = new Random();
             int i = 0;
-            for (int h = 0; i < 100; h++)
+            for (int h = 0; i < one.Length; h++)
             {
                 one[h] = new data();
                 two[h] = new data();
-                var timestamp = DateTime.Now.Millisecond;
+                var timestamp = (int)DateTime.Now.Ticks;
                 one[h].Time = timestamp;
                 one[h].randomValue = random.Next(5, 100);
                 if (i > 10)
@@ -35,14 +36,19 @@ namespace GenericFactory
             var dic = new Dictionary<int, data[]>();
             dic.Add(0, one);
             dic.Add(1, two);
+            for(int p=2; p < 10; p++)
+            { 
+                dic.Add(p, two);
+            }
 
-
-
+            var stopwatch=new Stopwatch();
+            stopwatch.Start();
             // key ist timestamp
             var result = new SortedDictionary<int, List<ResultObject>>();
             // get all timestamps and add to result
             data[] first = dic[0];
-            for(int j = 0; j < 100; j++)
+            var firstLength= first.Length;
+            for (int j = 0; j < firstLength; j++)
             {
                 var timeSt = first[j].Time;
                 result.Add(timeSt, new List<ResultObject>());
@@ -53,7 +59,7 @@ namespace GenericFactory
 
             foreach (var VARIABLE in dic)
             {
-                for(int u = 0; u < 100 ; u++)
+                for(int u = 0; u < firstLength; u++)
                 { 
                     var res = new ResultObjectHelper();
                     res.sensor = VARIABLE.Key;
@@ -66,7 +72,7 @@ namespace GenericFactory
             foreach (var VARIABLE in result)
             {
                 int timestamp = VARIABLE.Key;
-                for (int j = 199; j > 0; j--)
+                for (int j = firstLength * dic.Count -1 ; j > 0; j--)
                 {
                     if (timestamp == sensorList[j].Time)
                     {
@@ -78,7 +84,7 @@ namespace GenericFactory
                     }
                 }
             }
-            
+            Console.WriteLine(stopwatch.ElapsedMilliseconds);
             return result;
         }
     }

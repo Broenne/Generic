@@ -17,11 +17,13 @@ namespace GenericFactory
             var rin=new ring();
             var res = rin.Do();
 
-            Assert.AreEqual(100, res.Count);
+            Assert.AreEqual(1000, res.Count);
+
+            Assert.AreEqual(10, res.Last().Value.Count);
 
             List<ResultObject> hhh = res.Last().Value;
             //hhh[1].valueRes;
-            Assert.GreaterOrEqual(90, hhh[1].valueRes);
+            Assert.GreaterOrEqual(hhh[1].valueRes, 90);
 
             //foreach (KeyValuePair<int, List < ResultObject >> timestamp in res)
             //{
