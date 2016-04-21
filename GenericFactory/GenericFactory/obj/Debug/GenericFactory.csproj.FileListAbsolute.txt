@@ -19,3 +19,4 @@ C:\apps\GenericRepo\GenericFactory\GenericFactory\bin\Debug\Rhino.Mocks.dll
 C:\apps\GenericRepo\GenericFactory\GenericFactory\bin\Debug\Autofac.xml
 C:\apps\GenericRepo\GenericFactory\GenericFactory\bin\Debug\nunit.framework.xml
 C:\apps\GenericRepo\GenericFactory\GenericFactory\bin\Debug\Rhino.Mocks.xml
+C:\apps\GenericRepo\GenericFactory\GenericFactory\obj\Debug\GenericFactory.csprojResolveAssemblyReference.cache

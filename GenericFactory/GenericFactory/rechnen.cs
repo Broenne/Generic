@@ -106,11 +106,6 @@ namespace GenericFactory
                 throw new Exception();
             }
 
-            // split array before and after each null
-            
-
-
-
             // get first value in dic
             var count = ToFill.Count;
             double? localFirst = null;
@@ -128,7 +123,7 @@ namespace GenericFactory
                 {
                     var localLast=ToFill[i];
                     double? localLastKey=i;
-                    var ccc = new Dictionary<double, double?>();
+                    var ccc = new Dictionary<double, double?>(); // handle only the needed part of the dictionary
                     this.GetValue(localFirstKey, localLastKey, localFirst, localLast, ccc);
                     foreach (var item in ccc)
                     {
@@ -154,10 +149,10 @@ namespace GenericFactory
         {
             if (localFirstKey != null && localLastKey != null)
             {
-                var xxx = new Dictionary<double, double>();
-                xxx.Add((double) localFirstKey, localFirst.Value);
-                xxx.Add((double) localLastKey, localLast.Value);
-                var res = this.Calculate(1, xxx);
+                var calculateHelper = new Dictionary<double, double>();
+                calculateHelper.Add((double) localFirstKey, localFirst.Value);
+                calculateHelper.Add((double) localLastKey, localLast.Value);
+                var res = this.Calculate(1, calculateHelper);
                 // fill between
                 var m = res["a1"];
                 var b = res["a0"];
@@ -173,7 +168,7 @@ namespace GenericFactory
             var result = new Dictionary<double, double>();
             foreach (var item in dic)
             {
-                result.Add(item.Key, (double) item.Value);
+                result.Add(item.Key, (double)item.Value);
             }
             return result;
         }

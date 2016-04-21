@@ -59,6 +59,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rechnen.cs" />
     <Compile Include="RechnenTest.cs" />
+    <Compile Include="ring.cs" />
+    <Compile Include="ringTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
